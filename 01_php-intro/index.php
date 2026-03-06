@@ -1,7 +1,7 @@
 <?php
     $nome = "Yasmin Lara Amanajás de Miranda";
-    $profissão = "Estudante de Tecnologia";
-    $curgo = "Técnico em Informática IFFR";
+    $profissao = "Estudante de Tecnologia";
+    $curso = "Técnico em Informática IFFR";
     $pagina_atual = "inicio";
 ?>
 <!DOCTYPE html>
@@ -14,10 +14,11 @@
 </head>
 <body>
     <?php include 'includes/cabecalho.php'; ?>
+    
 
-    <div class="hero">
+    <div class="inicio">
         <h1><?php echo $nome; ?></h1>
-        <p><?php echo $profissao; ?> <?php echo $curso; ?></p>
+        <p><?php echo $profissao; ?> | <?php echo $curso; ?></p>
     </div>
     <div class="container">
         <h2>Bem-vindo ao meu portfólio</h2>
