@@ -41,7 +41,7 @@
             <button type="submit">Enviar</button>
         </form>
         
-    //EU COLOQUEI O CÓDIGO DE VALIDAÇÃO DE VOLTA PRO USUÁRIO SABER Q TEM UM ERRO
+    <!--EU COLOQUEI O CÓDIGO DE VALIDAÇÃO DE VOLTA PRO USUÁRIO SABER Q TEM UM ERRO -->
     <?php if (!empty ($erros) ): ?>
         <div class="alerta-erro">
             <h3> Corrija os erros :</h3>
