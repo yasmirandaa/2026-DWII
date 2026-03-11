@@ -3,17 +3,18 @@
     $profissao = "Estudante de Tecnologia";
     $curso = "Técnico em Informática IFFR";
     $pagina_atual = "inicio";
+    $caminho_raiz = "../";
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale-1.0">
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="<?= $caminho_raiz ?>includes/estilo.css">
     <title>Portfólio - <?php echo $nome; ?></title>  
 </head>
 <body>
-    <?php include 'includes/cabecalho.php'; ?>
+    <?php include '../includes/cabecalho.php'; ?>
     
 
     <div class="inicio">
@@ -26,7 +27,7 @@
             <strong><?php echo date("d/m/y \à\s H:i:s"); ?></strong></p>
     </div>
 
-    <?php include 'includes/rodape.php'; ?>
+    <?php include '../includes/rodape.php'; ?>
 
 </body>
 </html>

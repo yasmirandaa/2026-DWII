@@ -27,6 +27,7 @@ body {
         font-family: 'Cormorant Garamond', serif;
 }
 .container {
+        margin-top:0;
         font-family: 'Cormorant Garamond', serif;
         background-color: var(--white);
         border-radius: 20px;
@@ -35,6 +36,20 @@ body {
         max-width: 800px; 
         margin: 40px auto; 
         padding: 50px 20px;
+}
+.sla{
+        background: #010000; 
+        color: #a8e6a3; 
+        padding: 10px 16px;
+        border-radius: 6px; 
+        margin-top: 10px; 
+        font-family: 'Courier New', monospace;
+        font-size: 13px; 
+        line-height: 1.8;
+}
+.box-info p {
+        font-size: 14px;
+        color: #374151;
 }
 .sobre {
         max-width: 800px; 
