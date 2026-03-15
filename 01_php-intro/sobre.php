@@ -1,17 +1,17 @@
 <?php
     $nome = "Yasmin Lara Amanajás de Miranda";
-        $pagina_atual = "sobre";
-        ?>
+    $pagina_atual = "sobre";
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="../includes/estilo.css">
     <title>Sobre - <?php echo $nome; ?></title>
 </head>
 <body>
-    <?php include 'includes/cabecalho.php'; ?>
+    <?php include '../includes/cabecalho.php'; ?>
     
     
     <div class="sobre">
@@ -29,6 +29,6 @@
     <div class="voltar">
         <a href="index.php"> Voltar ao início</a>
     </div>
-    <?php include 'includes/rodape.php'; ?>
+    <?php include '../includes/rodape.php'; ?>
 </body>
 </html>

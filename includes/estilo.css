@@ -9,6 +9,7 @@
     --light-mid: #d4a898;
 }
 * {
+        text-decoration: none; 
         margin: 0;
 }
 body { 
@@ -21,10 +22,21 @@ body {
         max-width: 800px; 
         margin: 40px auto;    
 }
-.nav {
+nav {
         background: var(--deep);
         padding: 25px 60px;
         font-family: 'Cormorant Garamond', serif;
+}
+.erro{
+        margin-top:0;
+        font-family: 'Cormorant Garamond', serif;
+        background-color: var(--white);
+        border-radius: 20px;
+        color: var(--mid);
+        
+        max-width: 800px; 
+        margin: 20px auto -30px auto; 
+        padding: 20px 20px;
 }
 .container {
         margin-top:0;
@@ -37,26 +49,20 @@ body {
         margin: 40px auto; 
         padding: 50px 20px;
 }
-.sla{
-        background: #010000; 
-        color: #a8e6a3; 
-        padding: 10px 16px;
-        border-radius: 6px; 
-        margin-top: 10px; 
-        font-family: 'Courier New', monospace;
-        font-size: 13px; 
-        line-height: 1.8;
-}
-.box-info p {
-        font-size: 14px;
-        color: #374151;
-}
 .sobre {
         max-width: 800px; 
         margin: 40px auto; 
         padding: 40px 20px; 
         padding-bottom: 60px;
          
+}
+.secao{        
+        margin: 20px auto;  
+}
+.conceitos {
+        font-size: 13px; 
+        color: #6b7280; 
+        margin-top: 8px;
 }
 .voltar {
         text-align: center;
@@ -87,12 +93,31 @@ body {
 .projetos p {
         color: var(--mid);  
 }
+.sla{
+        background: #010000; 
+        color: #a8e6a3; 
+        padding: 10px 16px;
+        border-radius: 6px; 
+        margin-top: 10px; 
+        font-family: 'Courier New', monospace;
+        font-size: 13px; 
+        
+        
+}
 h2{
         font-family: 'Cormorant Garamond', serif;
         font-size: 30px;
         margin-bottom: 10px;
-        font-style: italic;
         color: var(--accent);   
+}
+h3 a{
+        color: var(--accent);
+        text-decoration: none; 
+        margin-right: 20px;
+        font-weight: bold; 
+}
+h3 a:hover {
+        text-decoration: underline;
 }
 h1{
         text-align: center;
@@ -104,7 +129,11 @@ h1{
         font-style: italic;
         color: var(--accent);
 }
+nav a.ativo {
+        color: var(--white);
+}
 nav a { 
+        color: var(--accent);
         text-decoration: none; 
         margin-right: 20px;
         font-weight: bold; 

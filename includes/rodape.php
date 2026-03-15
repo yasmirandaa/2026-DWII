@@ -1,5 +1,5 @@
 <?php
-    $autor = isset($nome) ? htmlspecialchars($nome) : "Portifólio";
+    $autor = isset($nome) ? htmlspecialchars($nome) : "Portfólio";
 ?>
 <footer>
     <?php echo $autor; ?> 

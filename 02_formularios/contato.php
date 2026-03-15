@@ -1,4 +1,3 @@
-
 <?php
     $nome = "Yasmin Lara Amanajás de Miranda";
     $pagina_atual = "contato";
@@ -24,10 +23,25 @@
         elseif (strlen ($mensagem) < 10) {
             $erros [] = 'A mensagem deve ter pelo menos 10 caracteres. ';
         }
+        if (empty ($erros) && $_SERVER['REQUEST_METHOD'] === 'POST' ) {
+        header ('Location: obrigado.php?nome=' . urlencode ($nome_visitante) );
+        exit;
+        }
+    
     }
 ?>
 <?php include '../includes/cabecalho.php'; ?>
 
+    
+    <!--EU COLOQUEI O CÓDIGO DE VALIDAÇÃO DE VOLTA PRO USUÁRIO SABER Q TEM UM ERRO -->
+    <?php if (!empty ($erros) ): ?>
+        <div class="erro">
+            <h3> Corrija os erros :</h3>
+                <?php foreach ($erros as $erro) : ?>
+            <p style="margin: 4px 0;">> <?php echo htmlspecialchars ($erro); ?></p>
+                <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
     <div class="container">
         <h1 class="titulo-secao"> Formulário de Contato </h1>
 
@@ -40,22 +54,8 @@
 
             <button type="submit">Enviar</button>
         </form>
-        
-    <!--EU COLOQUEI O CÓDIGO DE VALIDAÇÃO DE VOLTA PRO USUÁRIO SABER Q TEM UM ERRO -->
-    <?php if (!empty ($erros) ): ?>
-        <div class="alerta-erro">
-            <h3> Corrija os erros :</h3>
-                <?php foreach ($erros as $erro) : ?>
-            <p style="margin: 4px 0;">> <?php echo htmlspecialchars ($erro); ?></p>
-                <?php endforeach; ?>
-        </div>
-    <?php endif; ?>
+    </div>  
 
-    <?php if (empty ($erros) && $_SERVER['REQUEST_METHOD'] === 'POST' ) {
-        header ('Location: obrigado.php?nome=' . urlencode ($nome_visitante) );
-        exit;
-    }
-    ?>
+ 
 
 <?php include '../includes/rodape.php'; ?>
-
