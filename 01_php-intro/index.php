@@ -1,7 +1,7 @@
 <?php
     $nome = "Yasmin Lara Amanajás de Miranda";
     $profissao = "Estudante de Tecnologia";
-    $curso = "Técnico em Informática IFFR";
+    $curso = "Técnico em Informática IFPR";
     $pagina_atual = "inicio";
     $caminho_raiz = "../";
 ?>
@@ -9,12 +9,12 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale-1.0">
-    <link rel="stylesheet" href="<?= $caminho_raiz ?>includes/estilo.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?php echo $caminho_raiz; ?>includes/estilo.css">
     <title>Portfólio - <?php echo $nome; ?></title>  
 </head>
 <body>
-    <?php include '../includes/cabecalho.php'; ?>
+    <?php include $caminho_raiz . 'includes/cabecalho.php'; ?>
     
 
     <div class="inicio">
@@ -27,7 +27,7 @@
             <strong><?php echo date("d/m/y \à\s H:i:s"); ?></strong></p>
     </div>
 
-    <?php include '../includes/rodape.php'; ?>
+    <?php include $caminho_raiz . 'includes/rodape.php'; ?>
 
 </body>
 </html>

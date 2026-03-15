@@ -1,17 +1,18 @@
 <?php
     $pagina_atual = "projetos";
-    $nome = "Yasmin Lara Amanajás de Miranda"
+    $nome = "Yasmin Lara Amanajás de Miranda";
+    $caminho_raiz = "../";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../includes/estilo.css">
-    <title>Projetos</title>
+    <link rel="stylesheet" href="<?php echo $caminho_raiz; ?>includes/estilo.css">
+    <title>Projetos - <?php echo $nome; ?></title>
 </head>
 <body>
-    <?php include '../includes/cabecalho.php'; ?>
+    <?php include $caminho_raiz . 'includes/cabecalho.php'; ?>
     <div class="projetos">
         <h2>Site Portfólio HTML/CSS</h2>
         <p>Primeiro site que criei no DWII. Layout responsivo com HTML e CSS puro.</p>
@@ -22,6 +23,6 @@
         <h2>Sistema de uma Hamburgueria</h2>
         <p>Projeto final da matéria de programação de sistemas, feito em python, ele faz um CRUD completo.</p>
     </div>
-    <?php include '../includes/rodape.php'; ?>
+    <?php include $caminho_raiz . 'includes/rodape.php'; ?>
 </body>
 </html>

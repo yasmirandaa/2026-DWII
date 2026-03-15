@@ -2,18 +2,21 @@
 $nome = "Yasmin Lara Amanajás de Miranda";
 $pagina_atual = "contato";
 $caminho_raiz = "../";
-$titulo_pagina = "Obrigado!";
+$titulo_pagina = "Obrigada!";
 
-$nome_visitante = htmlspecialchars ($_GET[ 'nome' ] ?? 'visitante') 
+$nome_visitante = htmlspecialchars ($_GET[ 'nome' ] ?? 'visitante');
+$assunto = htmlspecialchars ($_GET[ 'assunto' ] ?? 'sem assunto') ;
 ?>
 
-<?php include '../includes/cabecalho.php'; ?>
-    <div class="container confirmacao">
-    <p class="confirmacao-icone"> ok </p>
-    <h1 class="confirmacao-titulo">Obrigado, <?php echo $nome_visitante; ?>!</h1>
-    <p class="confirmacao-texto">
-        Sua mensagem foi recebida. Entrarei em contato em breve.
-    </p>
-    <a href="contato.php" class="btn">- Enviar outra mensagem</a>
+    <?php include $caminho_raiz . 'includes/cabecalho.php'; ?>
+    <div class="container">
+        <h1 class="obrigado">Obrigada, <?php echo $nome_visitante; ?>!</h1>
+        <p class="msg">
+            Sua mensagem foi enviada. Entrarei em contato em breve.<br>
+            Assunto: <?php echo htmlspecialchars($assunto); ?>
+        </p>
+        <div class="btn">
+            <a href="contato.php">Enviar outra mensagem</a>
+        </div>
     </div>
-<?php include '../includes/rodape.php'; ?>
+<?php include $caminho_raiz . 'includes/rodape.php'; ?>

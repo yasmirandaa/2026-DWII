@@ -6,10 +6,6 @@
     return ($item===$atual) ? 'class="ativo"' : '';
   }  
 ?>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?php echo htmlspecialchars($titulo_pagina); ?></title>
   
 <nav>
   <a href="<?php echo $caminho_raiz; ?>index.php"

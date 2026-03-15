@@ -30,7 +30,6 @@ $aulas=[
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($subtitulo); ?></title>
-    <link rel="stylesheet" href="includes/estilo.css">
 </head>
 <body>
     <?php include 'includes/cabecalho.php'; ?>
@@ -44,7 +43,7 @@ $aulas=[
         <?php foreach ($aulas as $aula): ?>
 
         <div class="secao">
-            <h3 style="color: <?php echo $aula ['cor']; ?>; ">
+            <h3>
                 <a href="<?php echo htmlspecialchars($aula['link']); ?>">
                 <?php echo htmlspecialchars($aula['nome']); ?>
                 </a>
@@ -58,18 +57,18 @@ $aulas=[
             
         </div>
         <?php endforeach; ?>
-        <p style="text-align: right; font-size: 13px; color: #9ca3af; margin-top: 8px;">
+        <p class="gerado">
             Gerado em: <?php echo date("d/m/Y \à\s H:i:s"); ?>
         </p>
     </div>
     <div class="container">
-        <div class="box-info">
+        <div>
             <h3> Como executar este repositório</h3>
             <p> Suba o servidor PHP na <strong>raiz</strong> para acessar todas as aulas </p>
             <div class="sla">
                 cd ~/workspaces/2026-DWII<br>php -S localhost:8000
             </div>
-            <p style="font-size: 13px; color: #6b7280; margin-top: 8px;">
+            <p>
                 Esta página é o hub de navegação. Use os botões para acessar cada projeto.
             </p>
         </div>
