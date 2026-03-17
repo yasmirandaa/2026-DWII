@@ -10,58 +10,58 @@
         exit;
     }
 
-    $stmt = $pdo->prepare('SELECT FROM tecnologias WHERE id = :id');
+    $stmt = $pdo->prepare('SELECT * FROM tecnologias WHERE id = :id');
     $stmt->execute(['id' => $id]);
     $tec = $stmt->fetch(); 
 
     if (!$tec) {
-        header('Location: index.php');
+        require '404.php';
         exit;
     }
     
+
+    $categoria = $_GET['categoria'] ?? '';
+    $link_voltar = $categoria ? "index.php?categoria=" . urlencode($categoria) : "index.php";
+
     $titulo_pagina = htmlspecialchars ($tec['nome'] ) . " - Catalogo";
     $pagina_atual = "catalogo";
 ?>
-<! DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <?php include 'includes/cab_pdo.php' ; ?>
 </head>
 <body>
     <div class="container">
-        <a href="index. php" style="color: #3b579d; font-weight: bold; ">- Voltar ao
-        catálogo</a>
-        <div class="card" style="margin-top: 20px;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-
-            start; ">
-                <h1 style="color: #3b579d; margin: 0 0 8px; font-size: 24px;">
-                    <?php echo htmlspecialchars ($tec['nome' ]) ; ?>
+        <a class="voltar" href="<?php echo $link_voltar; ?>">← Voltar ao catálogo</a>
+        <div class="card">
+            <div>
+                <h1>
+                    <?php echo htmlspecialchars ($tec['nome']) ; ?>
                 </h1>
-                <span style="background: #e8edf5; color: #3b579d; padding: 4px 12px;
-            border-radius: 20px; font-size: 13px; font-weight: bold;
-            white-space: nowrap; ">
+                <span>
                     <?php echo htmlspecialchars ($tec['categoria']) ; ?>
                 </span>
             </div>
-            <p style="font-size: 16px; margin: 16px 0;">
+            <p>
                 <?php echo htmlspecialchars ($tec['descricao']) ; ?>
             </p>
-            <table style="width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 14px; ">
-                <tr style="background: #f3f4f6; ">
-                    <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: bold; width: 160px; ">ID</td>
-                    <td style="padding: 10px; border: 1px solid #e5e7eb;">
-                        <?php echo $tec['id'] ; ?>
+            <table>
+                <tr>
+                    <td>ID</td>
+                    <td>
+                        <?php echo htmlspecialchars($tec['id']) ; ?>
                     </td>
                 </tr>
                 <tr>
-                    <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: bold; ">Ano de criação</td>
-                    <td style="padding: 10px; border: 1px solid #e5e7eb;">
-                        <?php echo $tec ['ano_criacao']; ?>
+                    <td>Ano de criação</td>
+                    <td>
+                        <?php echo htmlspecialchars($tec['ano_criacao']); ?>
                     </td>
                 </tr>
-                <tr style="background: #f3f4f6; ">
-                    <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: bold; ">Cadastrado em</td>
-                    <td style="padding: 10px; border: 1px solid #e5e7eb;">
+                <tr>
+                    <td>Cadastrado em</td>
+                    <td>
                         <?php echo date ('d/m/Y \\s H:i', strtotime ($tec ['criado_em'])) ; ?>
                     </td>
                 </tr>
