@@ -4,7 +4,6 @@
 
     $titulo_pagina = 'Página Pública';
     $caminho_raiz = '../';
-    $pagina_atual = '';
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -19,7 +18,7 @@
                 <p>Olá, <strong><?php echo htmlspecialchars($_SESSION['usuario']); ?></strong>! Você já está autenticado.</p>
                 <a href="painel.php">Ir ao Painel</a>
             <?php else: ?>
-                <a href="login.php"> Acessar Área Restrita</a>
+                <p class=link-volta><a href="login.php"> Acessar Área Restrita</a></p>
             <?php endif; ?>
         </div>
         <?php require_once __DIR__ . '/../includes/rodape.php'; ?>
