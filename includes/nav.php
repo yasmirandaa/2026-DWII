@@ -32,4 +32,13 @@
     <?php echo menu_class("catalogo", $pagina_atual); ?>>
     Catálogo
   </a>
+  <a href="<?php echo $caminho_raiz; ?>04_sessoes/publico.php"
+    <?php echo menu_class("Página Pública", $titulo_pagina); ?>>
+    Público
+  </a>
+  <a href="<?php echo $caminho_raiz; ?>04_sessoes/login.php"
+    <?php echo menu_class("Login Área Restrita", $titulo_pagina); ?>>
+    Login
+  </a>
+  
 </nav>
