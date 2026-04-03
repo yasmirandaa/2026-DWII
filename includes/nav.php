@@ -40,5 +40,8 @@
     <?php echo menu_class("Login Área Restrita", $titulo_pagina); ?>>
     Login
   </a>
-  
+  <a href="<?php echo $caminho_raiz; ?>05_crud/index.php"
+    <?php echo menu_class("Meus Projetos - Portfólio", $titulo_pagina); ?>>
+      Portifólio
+  </a>
 </nav>

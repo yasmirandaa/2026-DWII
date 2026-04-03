@@ -22,13 +22,13 @@
         $form['ano'] = (int) ($_POST['ano'] ?? date ('Y'));
         
         if ($form['nome'] === '') {
-            $erro = '10 nome do projeto é obrigatório.';
+            $erro = 'O nome do projeto é obrigatório.';
         } elseif ($form['descricao'] === '') {
             $erro = 'A descrição é obrigatória.';
         } elseif ($form['tecnologias'] === '') {
             $erro = 'Informe ao menos uma tecnologia.';
-        } elseif ($form['ano'] < 2000 || $form['ano'] > (int) date ('') + 1) {
-            $erro= 'Ano inválido.';
+        } elseif ($form['ano'] < 2000 || $form['ano'] > (int) date ('Y') + 1) {
+            $erro = 'Ano inválido.';
         }
 
         if ($erro === '') {
@@ -37,9 +37,9 @@
                     VALUES (:nome, :descricao, :tecnologias, :link_github, :ano)';
             $stmt = $pdo->prepare($sql);
             $stmt->execute([
-                ': nome' => $form['nome'],
+                ':nome' => $form['nome'],
                 ':descricao' => $form['descricao'], 
-                ': tecnologias' => $form['tecnologias'],
+                ':tecnologias' => $form['tecnologias'],
                 ':link_github' => $form['link_github'] !== '' ? $form['link_github']: null,
                 ':ano' => $form['ano'],
             ]);
@@ -57,9 +57,9 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="titulo-secao">+ Cadastrar Novo Projeto</h1>
+        <h1>+ Cadastrar Novo Projeto</h1>
         <?php if ($erro): ?>
-            <div class="alerta-erro">
+            <div>
                 <p> <?php echo htmlspecialchars($erro); ?></p>
             </div>
         <?php endif; ?>
@@ -76,8 +76,7 @@
                 <textarea id="descricao"
                             name="descricao"
                             rows="4"
-                            placeholder="Descreva o projeto em 2-3 frases...">
-                            <?php echo htmlspecialchars($form ['descricao']); ?></textarea>
+                            placeholder="Descreva o projeto em 2-3 frases..."><?php echo htmlspecialchars($form ['descricao']); ?></textarea>
                 <label for="tecnologias">Tecnologias usadas: <span>*</span></label>
                 <input type="text"
                         id="tecnologias"
@@ -102,7 +101,7 @@
                 <button type="submit">Salvar Projeto</button>
             </form>
         </div>
-        <p style="margin-top: 20px; text-align: center;">
+        <p>
             <a href="index.php">Voltar à listagem</a>
         </p>
     </div>

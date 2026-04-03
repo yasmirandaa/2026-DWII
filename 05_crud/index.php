@@ -3,9 +3,24 @@
     requer_login();
 
     require_once __DIR__ . '/includes/conexao.php';
-
+    
     $pdo = conectar();
-    $stmt = $pdo->query('SELECT * FROM projetos ORDER BY criado_em DESC');
+    $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+
+    if ($pagina < 1) {
+        $pagina = 1;
+    }
+
+    $limite = 3;
+    $offset = ($pagina - 1) * $limite;
+
+    $total = $pdo->query("SELECT COUNT(*) FROM projetos")->fetchColumn();
+
+    $stmt = $pdo->prepare("SELECT * FROM projetos ORDER BY criado_em DESC LIMIT :limite OFFSET :offset");
+    $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
+
     $projetos = $stmt->fetchAll();
 
     $cadastroOk = isset($_GET['cadastro']) && $_GET['cadastro'] === 'ok';
@@ -19,20 +34,24 @@
 </head>
 <body>
     <div class="container">
-            <div>
-                <h1 class="titulo-secao" style="margin: 0;">Meus Projetos</h1>
-                <a href="cadastrar.php" class="btn-primario">Novo Projeto</a>
-            </div>
+        <div>
+            <h1>Meus Projetos</h1>
+            <form method="GET">
+                <input type="text" name="busca" placeholder="Buscar...">
+                <button type="submit">Buscar</button>
+            </form>
+            <a class="voltar" href="cadastrar.php">+ Novo Projeto</a>
+        </div>
         <?php if ($cadastroOk): ?>
-            <div class="alerta-sucesso">
-                <p style="margin: 0;"> Projeto cadastrado com sucesso!</p>
+            <div>
+                <p> Projeto cadastrado com sucesso!</p>
             </div>
         <?php endif; ?>
         
         <?php if (empty($projetos)): ?>
             <div class="card">
                 <p>Nenhum projeto cadastrado ainda.</p>
-                <a href="cadastrar.php" class="btn-primario">Cadastrar o primeiro projeto</a>
+                <a href="cadastrar.php">Cadastrar o primeiro projeto</a>
             </div>
         <?php else: ?>
             <div>
@@ -41,20 +60,26 @@
                         <h3>
                             <?php echo htmlspecialchars($projeto['nome']); ?>
                         </h3>
-                        <p> 
-                            <?php echo htmlspecialchars($projeto ['descricao']); ?>
-                        </p>
                         <p>
-                            <?php echo htmlspecialchars($projeto ['tecnologias']); ?>
+                            <?php echo htmlspecialchars($projeto['tecnologias']); ?>
                         </p>
-                        <p>
-                            <?php echo htmlspecialchars($projeto ['ano']); ?>
-                        </p>
+                        <a class="detalhes" href="detalhe.php?id=<?php echo (int)$projeto['id']; ?>">
+                            Ver detalhes
+                        </a>
                         <?php if ($projeto ['link_github']): ?>
-                            echo htmlspecialchars ($projeto ['link_github']); ?>" target="_blank" rel="noopener noreferrer" class="btn-secundario"> Ver no GitHub</a>
+                            <a>echo htmlspecialchars ($projeto ['link_github']); ?>" target="_blank" rel="noopener noreferrer" class="voltar"> Ver no GitHub</a>
                         <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
+            </div>
+            <div class="paginacao">
+                <?php if ($pagina > 1): ?>
+                    <a href="?pagina=<?php echo $pagina - 1; ?>" class="btn-pag">⬅ Anterior</a>
+                <?php endif; ?>
+
+                <?php if ($offset + $limite < $total): ?>
+                    <a href="?pagina=<?php echo $pagina + 1; ?>" class="btn-pag proximo">Próximo ➡</a>
+                <?php endif; ?>
             </div>
             <p>
                 <?php echo count($projetos); ?> projeto(s) cadastrado(s)</p>

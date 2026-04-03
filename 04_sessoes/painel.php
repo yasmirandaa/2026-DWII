@@ -12,7 +12,6 @@
 
     $titulo_pagina = 'Painel Área Restrita';
     $caminho_raiz = '../';
-    $pagina_atual = '';
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">

@@ -256,8 +256,7 @@ footer {
 }
 
 .voltar:hover {
-    background: var(--accent);
-    color: var(--white);
+    text-decoration: underline;
 }
 
 .card {
@@ -345,7 +344,11 @@ footer {
     max-width: 300px;
     margin-bottom: 5px;
 }
-
+.form-container textarea {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 5px;
+}
 .link-volta a {
     color: var(--accent);
     margin-right: 20px;
@@ -360,4 +363,33 @@ footer {
     width: 100%;
     max-width: 300px;
     margin-top: 15px;
+}
+
+.card .detalhes{
+    display: block; 
+    text-align: right;
+}
+
+.paginacao {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.paginacao {
+    display: flex;
+    margin-top: 30px;
+}
+
+.proximo {
+    margin-left: auto;
+}
+.btn-pag {
+    display: inline-block;
+    margin-top: 12px;
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.btn-pag:hover {
+    text-decoration: underline;
 }

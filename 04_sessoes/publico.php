@@ -16,7 +16,7 @@
             <p>Este conteúdo é visível para qualquer visitante, sem login.</p>
             <?php if ($logado): ?>
                 <p>Olá, <strong><?php echo htmlspecialchars($_SESSION['usuario']); ?></strong>! Você já está autenticado.</p>
-                <a href="painel.php">Ir ao Painel</a>
+                <a class="voltar"href="painel.php">Ir ao Painel</a>
             <?php else: ?>
                 <p class=link-volta><a href="login.php"> Acessar Área Restrita</a></p>
             <?php endif; ?>
