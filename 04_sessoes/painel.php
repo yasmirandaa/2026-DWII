@@ -32,8 +32,8 @@
                 </p>
             </div>
             <p><strong>Visitas nesta sessão:</strong>
-    <?php echo $_SESSION['visitas']; ?>
-</p>
+                <?php echo $_SESSION['visitas']; ?>
+            </p>
             <div class="card">
                 <h3> Painel de controle</h3>
                 <p>Este conteúdo só é visível para usuários autenticados.</p>
