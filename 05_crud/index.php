@@ -23,7 +23,12 @@
 
     $projetos = $stmt->fetchAll();
 
+
     $cadastroOk = isset($_GET['cadastro']) && $_GET['cadastro'] === 'ok';
+    $editadoOk = isset($_GET['editado']) && $_GET['editado'] === 'ok';
+    $excluidoOk = isset($_GET['excluido']) && $_GET['excluido'] === 'ok';
+    $erroMsg = isset($_GET['erro']) ? $_GET['erro'] : '';
+
     $titulo_pagina = 'Meus Projetos - Portfólio';
     $caminho_raiz = '../';
 ?>
@@ -45,6 +50,18 @@
         <?php if ($cadastroOk): ?>
             <div>
                 <p> Projeto cadastrado com sucesso!</p>
+            </div>
+        <?php endif; ?>
+
+        <?php if ($editadoOk): ?>
+            <div>
+                <p> Projeto atualizado com sucesso!</p>
+            </div>
+        <?php endif; ?>
+
+        <?php if ($excluidoOk): ?>
+            <div>
+                <p> Projeto removido com sucesso!</p>
             </div>
         <?php endif; ?>
         
@@ -69,6 +86,10 @@
                         <?php if ($projeto ['link_github']): ?>
                             <a>echo htmlspecialchars ($projeto ['link_github']); ?>" target="_blank" rel="noopener noreferrer" class="voltar"> Ver no GitHub</a>
                         <?php endif; ?>
+                        <div>
+                            <a class="detalhes" href="editar.php?id=<?php echo (int) $projeto['id']; ?>">Editar</a>
+                            <a class="detalhes" href="excluir.php?id=<?php echo (int) $projeto['id']; ?>">Excluir</a>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -82,7 +103,8 @@
                 <?php endif; ?>
             </div>
             <p>
-                <?php echo count($projetos); ?> projeto(s) cadastrado(s)</p>
+                <?php echo count($projetos); ?> projeto(s) cadastrado(s)
+            </p>
         <?php endif; ?>
     </div>
     <?php require_once __DIR__ . '/../includes/rodape.php'; ?>
