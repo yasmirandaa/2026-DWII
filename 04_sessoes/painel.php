@@ -37,7 +37,7 @@
             <div class="card">
                 <h3> Painel de controle</h3>
                 <p>Este conteúdo só é visível para usuários autenticados.</p>
-                <p>Nas próximas aulas este painel terá funcionalidades reais (CRUD).</p>
+                <a href="../05_crud/index.php"> Gerenciar Projetos</a>
             </div>
             <p class=link-volta><a href="logout.php"> Sair </a></p>
         </div>
