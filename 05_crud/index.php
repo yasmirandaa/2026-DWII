@@ -16,7 +16,14 @@
     $limite = 3;
     $offset = ($pagina - 1) * $limite;
 
-    $total = $pdo->query("SELECT COUNT(*) FROM projetos")->fetchColumn();
+    if ($busca != '') {
+        $stmtTotal = $pdo->prepare("SELECT COUNT(*) FROM projetos WHERE nome LIKE :busca");
+        $stmtTotal->bindValue(':busca', "%$busca%");
+        $stmtTotal->execute();
+        $total = $stmtTotal->fetchColumn();
+    } else {
+        $total = $pdo->query("SELECT COUNT(*) FROM projetos")->fetchColumn();
+    }
 
     $sql = "SELECT * FROM projetos";
 
