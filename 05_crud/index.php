@@ -4,7 +4,9 @@
 
     require_once __DIR__ . '/includes/conexao.php';
     
+    
     $pdo = conectar();
+    $busca = $_GET['busca'] ?? '';
     $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 
     if ($pagina < 1) {
@@ -16,7 +18,19 @@
 
     $total = $pdo->query("SELECT COUNT(*) FROM projetos")->fetchColumn();
 
-    $stmt = $pdo->prepare("SELECT * FROM projetos ORDER BY criado_em DESC LIMIT :limite OFFSET :offset");
+    $sql = "SELECT * FROM projetos";
+
+    if ($busca != '') {
+        $sql .= " WHERE nome LIKE :busca";
+    }
+
+    $sql .= " ORDER BY criado_em DESC LIMIT :limite OFFSET :offset";
+
+    $stmt = $pdo->prepare($sql);
+
+    if ($busca != '') {
+        $stmt->bindValue(':busca', "%$busca%");
+    }
     $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
     $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
     $stmt->execute();
@@ -84,7 +98,9 @@
                             Ver detalhes
                         </a>
                         <?php if ($projeto ['link_github']): ?>
-                            <a>echo htmlspecialchars ($projeto ['link_github']); ?>" target="_blank" rel="noopener noreferrer" class="voltar"> Ver no GitHub</a>
+                            <a href="<?php echo htmlspecialchars($projeto['link_github']); ?>" target="_blank" class="voltar">
+                                Ver no GitHub
+                            </a>
                         <?php endif; ?>
                         <div>
                             <a class="detalhes" href="editar.php?id=<?php echo (int) $projeto['id']; ?>">Editar</a>

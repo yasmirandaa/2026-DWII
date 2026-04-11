@@ -102,7 +102,7 @@
             </form>
         </div>
         <p>
-            <a href="index.php">Voltar à listagem</a>
+            <a class="voltar" href="index.php">Voltar à listagem</a>
         </p>
     </div>
     <?php require_once __DIR__ . '/../includes/rodape.php'; ?>

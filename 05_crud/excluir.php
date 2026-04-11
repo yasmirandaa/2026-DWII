@@ -5,14 +5,14 @@
     require_once __DIR__ . '/includes/conexao.php';
     
     $id = (int) ($_GET['id'] ?? 0);
-    if ($id = 0) {
+    if ($id <= 0) {
         header('Location: index.php?erro=id_invalido');
         exit;
     }
 
     $pdo = conectar();
-    $stmt = $pdo->prepare('SELECT nome FROM projetos WHERE id : id');
-    $stmt->execute(['id' => $id]);
+    $stmt = $pdo->prepare('SELECT nome FROM projetos WHERE id = :id');
+    $stmt->execute([':id' => $id]);
     $projeto = $stmt->fetch();
 
     if (!$projeto) {
@@ -21,8 +21,8 @@
     }
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $stmt = $pdo->prepare('DELETE FROM projetos WHERE id = : id');
-        $stmt->execute(['id' => $id]);
+        $stmt = $pdo->prepare('DELETE FROM projetos WHERE id = :id');
+        $stmt->execute([':id' => $id]);
         
         header('Location: index.php?excluido=ok');
         exit;
@@ -48,11 +48,11 @@
                 <?php echo htmlspecialchars($projeto ['nome']); ?>
             </p>
             <p>
-                Esta ação <strong>não pode ser desfeita</strong>.
+                Esta ação <strong>NÃO</strong> pode ser desfeita.
             </p>
             <form action="excluir.php?id=<?php echo $id; ?>"method="post">
                 <div>
-                    <button type="submit" class="btn-perigo"> Sim, excluir</button>
+                    <button type="submit" class="btn-perigo">Excluir</button>
                     <a href="index.php" class="btn-secundario">Cancelar</a>
                 </div>
             </form>

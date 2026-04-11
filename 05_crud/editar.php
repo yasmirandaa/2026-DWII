@@ -8,12 +8,13 @@
 
     if ($id <= 0) {
         header('Location: index.php?erro=id_invalido');
+        exit;
     }
-    exit;
+
 
     $pdo = conectar();
-    $stmt = $pdo->prepare('SELECT * FROM projetos WHERE id=id');
-    $stmt->execute(['id' => $id]);
+    $stmt = $pdo->prepare('SELECT * FROM projetos WHERE id=:id');
+    $stmt->execute([':id' => $id]);
     $projeto = $stmt->fetch();
 
     if (!$projeto) {
@@ -55,8 +56,9 @@
     ]);
     
     header('Location: index.php?editado=ok');
-    }
     exit;
+    }
+
     
     $projeto ['nome'] = $nome;
     $projeto ['descricao'] = $descricao;
@@ -81,7 +83,7 @@
                 ($erro); ?></p>
             </div>
         <?php endif; ?>
-        <form action="editar.php?id=<?php echo $id; ?>" method="post" class="formulario">
+        <form action="editar.php?id=<?php echo $id; ?>" method="post">
             <div class="campo">
                 <label class="label-campo">Nome do Projeto *</label>
                 <input type="text" name="nome" class="input-texto" value="<?php echo htmlspecialchars($projeto['nome']); ?>">
@@ -103,9 +105,9 @@
                 <label class="label-campo">Ano *</label>
                 <input type="number" name="ano" class="input-texto" value="<?php echo (int) $projeto ['ano']; ?>" min="2000" max="2099">
             </div>
-            <div style="display: flex; gap: 12px; margin-top: 8px;">
+            <div>
                 <button type="submit" class="btn-primario"> Salvar Alterações</button>
-                <a href="index.php" class="btn-secundario">Cancelar</a>
+                <a href="index.php" class="link-volta">Cancelar</a>
             </div>
         </form>
     </div>
