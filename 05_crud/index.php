@@ -41,7 +41,17 @@
     $cadastroOk = isset($_GET['cadastro']) && $_GET['cadastro'] === 'ok';
     $editadoOk = isset($_GET['editado']) && $_GET['editado'] === 'ok';
     $excluidoOk = isset($_GET['excluido']) && $_GET['excluido'] === 'ok';
-    $erroMsg = isset($_GET['erro']) ? $_GET['erro'] : '';
+    $erroMsg = '';
+
+    if (isset($_GET['erro'])) {
+        if ($_GET['erro'] === 'nao_encontrado') {
+            $erroMsg = 'Projeto não encontrado';
+        } elseif ($_GET['erro'] === 'id_invalido') {
+            $erroMsg = 'ID inválido';
+        } else {
+            $erroMsg = 'Ocorreu um erro';
+        }
+    }
 
     $titulo_pagina = 'Meus Projetos - Portfólio';
     $caminho_raiz = '../';
@@ -61,20 +71,26 @@
             </form>
             <a class="voltar" href="cadastrar.php">+ Novo Projeto</a>
         </div>
+        <?php if ($erroMsg): ?>
+            <div class="alerta-erro">
+                <?php echo htmlspecialchars($erroMsg); ?>
+            </div>
+        <?php endif; ?>
+        
         <?php if ($cadastroOk): ?>
-            <div>
+            <div class= "alerta-sucesso">
                 <p> Projeto cadastrado com sucesso!</p>
             </div>
         <?php endif; ?>
 
         <?php if ($editadoOk): ?>
-            <div>
+            <div class= "alerta-sucesso">
                 <p> Projeto atualizado com sucesso!</p>
             </div>
         <?php endif; ?>
 
         <?php if ($excluidoOk): ?>
-            <div>
+            <div class= "alerta-sucesso">
                 <p> Projeto removido com sucesso!</p>
             </div>
         <?php endif; ?>

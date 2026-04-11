@@ -31,9 +31,13 @@
     $tecnologias = trim($_POST['tecnologias'] ?? '');
     $link_github = trim($_POST['link_github'] ?? '');
     $ano = (int) ($_POST['ano'] ?? date('Y'));
+    
+    $anoAtual = date('Y');
 
     if ($nome === '' || $descricao === '' || $tecnologias === ''){
-        $erro= 'Preencha todos os campos obrigatórios.';
+        $erro = 'Preencha todos os campos obrigatórios.';
+    } elseif ($ano < 2000 || $ano > $anoAtual) {
+        $erro = 'O ano deve estar entre 2000 e ' . $anoAtual . '.';
     }
 
     if ($erro === '') {
@@ -83,33 +87,29 @@
                 ($erro); ?></p>
             </div>
         <?php endif; ?>
-        <form action="editar.php?id=<?php echo $id; ?>" method="post">
-            <div class="campo">
-                <label class="label-campo">Nome do Projeto *</label>
-                <input type="text" name="nome" class="input-texto" value="<?php echo htmlspecialchars($projeto['nome']); ?>">
-            </div>
-
-            <div class="campo">
-                <label class="label-campo">Descrição *</label>
-                <textarea name="descricao" class="input-texto" rows="4"><?php echo htmlspecialchars($projeto['descricao']); ?></textarea>
-            </div>
-            <div class="campo">
-                <label class="label-campo">Tecnologias *</label>
-                <input type="text" name="tecnologias" class="input-texto" value="<?php echo htmlspecialchars($projeto['tecnologias']); ?>">
-            </div>
-            <div class="campo">
-                <label class="label-campo">Link GitHub (opcional)</label>
-                <input type="url" name="link_github" class="input-texto" value="<?php echo htmlspecialchars($projeto ['link_github'] ?? ''); ?>">
-            </div>
-            <div class="campo">
-                <label class="label-campo">Ano *</label>
-                <input type="number" name="ano" class="input-texto" value="<?php echo (int) $projeto ['ano']; ?>" min="2000" max="2099">
-            </div>
-            <div>
-                <button type="submit" class="btn-primario"> Salvar Alterações</button>
-                <a href="index.php" class="link-volta">Cancelar</a>
-            </div>
-        </form>
+        <div class= "form-container">
+            <form action="editar.php?id=<?php echo $id; ?>" method="post">
+                    <label>Nome do Projeto *</label>
+                    <input type="text" name="nome" value="<?php echo htmlspecialchars($projeto['nome']); ?>">
+               
+                    <label>Descrição *</label>
+                    <textarea name="descricao" rows="4"><?php echo htmlspecialchars($projeto['descricao']); ?></textarea>
+               
+                    <label>Tecnologias *</label>
+                    <input type="text" name="tecnologias" value="<?php echo htmlspecialchars($projeto['tecnologias']); ?>">
+                
+                    <label>Link GitHub (opcional)</label>
+                    <input type="url" name="link_github" value="<?php echo htmlspecialchars($projeto ['link_github'] ?? ''); ?>">
+            
+                    <label>Ano *</label>
+                    <input type="number" name="ano" value="<?php echo (int) $projeto ['ano']; ?>" min="2000" max="2099">
+                </div>
+                <div>
+                    <button type="submit" class="btn-primario">Salvar</button>
+                    <a href="index.php" class="voltar">Cancelar</a>
+                </div>
+            </form>
+        </div>
     </div>
     <?php require_once __DIR__ . '/../includes/rodape.php'; ?>
 </body>

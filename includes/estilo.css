@@ -393,3 +393,29 @@ footer {
 .btn-pag:hover {
     text-decoration: underline;
 }
+.alerta-sucesso {
+    background-color: var(--cream);
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 8px;
+    color: var(--green);
+    padding: 14px;
+    border-radius: 12px;
+    margin: 15px auto;
+    max-width: 300px;
+    text-align: center;
+}
+
+.alerta-erro {
+    background-color: var(--light-mid);
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 8px;
+    color: #721c24;
+    padding: 14px;
+    border-radius: 12px;
+    margin: 15px auto;
+    max-width: 300px;
+    text-align: center;
+    
+}
