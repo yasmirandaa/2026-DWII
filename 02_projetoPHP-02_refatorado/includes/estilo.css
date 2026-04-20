@@ -1,4 +1,14 @@
-:root {
+/* ════════════════════════════════════════════════════════════
+ * Disciplina : Desenvolvimento Web II (DWII)
+ * Projeto    : Portfólio Pessoal — versão refatorada
+ * Arquivo    : includes/style.css
+ * Autor      : Yasmin Lara Amanajás de Miranda
+ * Data       : 19/04/2026
+ * Escopo     : CSS global unificado — serve todas as páginas
+ *              do projeto. Incorpora os estilos de apresentação
+ *              (anteriormente em 00_apresentacao/style.css).
+ * ════════════════════════════════════════════════════════════ */
+ :root {
     --white: #ffffff;
     --cream: #f7f2ec;
     --rose: #c47a6a;
@@ -398,7 +408,7 @@ footer {
     font-weight: bold;
     font-size: 15px;
     border-radius: 8px;
-    color: var(--green);
+    color: var(--verde);
     padding: 14px;
     border-radius: 12px;
     margin: 15px auto;
@@ -421,4 +431,79 @@ img{
     max-width: 300px;
     text-align: center;
     
+}
+
+/* ===== APRESENTAÇÃO (HOME) ===== */
+
+.apresentacao {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 40px 20px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* Foto */
+.foto-container {
+    flex-shrink: 0;
+}
+
+.foto-perfil {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--light-mid);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+/* Texto */
+.texto-container {
+    flex: 1;
+}
+
+.texto-container h2 {
+    font-size: 32px;
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+
+.texto-container p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Cards */
+.info-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.info-card {
+    background: var(--cream);
+    border: 1px solid var(--light-mid);
+    border-radius: 12px;
+    padding: 10px 16px;
+    transition: all 0.2s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-2px);
+    background: var(--accent);
+}
+
+.info-card:hover .card-texto {
+    color: var(--white);
+}
+
+.card-texto {
+    font-size: 14px;
+    color: var(--deep);
+    font-weight: bold;
 }

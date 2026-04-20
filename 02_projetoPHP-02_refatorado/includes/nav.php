@@ -1,4 +1,18 @@
-<?php
+ <?php
+ /**
+ * ════════════════════════════════════════════════════════════
+ * Disciplina : Desenvolvimento Web II (DWII)
+ * Projeto    : Portfólio Pessoal — versão refatorada
+ * Arquivo    : includes/nav.php
+ * Autor      : Yasmin Lara Amanajás de Miranda
+ * Data       : 19/04/2026
+ * Descrição  : Navegação global condicional do projeto.
+ *              Links públicos: sempre visíveis.
+ *              Links restritos (Painel, Sair): visíveis apenas
+ *              quando o usuário está autenticado ($_SESSION).
+ *              Link de Login: visível apenas quando NÃO autenticado.
+ * ════════════════════════════════════════════════════════════
+ */
   if (!isset($pagina_atual)) $pagina_atual = "";
   if (!isset($caminho_raiz)) $caminho_raiz = "./";
 
