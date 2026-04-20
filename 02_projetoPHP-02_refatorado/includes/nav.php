@@ -27,11 +27,11 @@
     <?php echo menu_class("sumario", $pagina_atual); ?>>
     Sumário
   </a>
-  <a href="<?php echo $caminho_raiz; ?>01_php-intro/index.php"
+  <a href="<?php echo $caminho_raiz; ?>index.php"
     <?php echo menu_class("inicio", $pagina_atual); ?>>
     Início
   </a>
-  <a href="<?php echo $caminho_raiz; ?>01_php-intro/sobre.php"
+  <a href="<?php echo $caminho_raiz; ?>sobre.php"
     <?php echo menu_class("sobre", $pagina_atual); ?>>
     Sobre
   </a>
