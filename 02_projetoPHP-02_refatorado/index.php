@@ -18,6 +18,11 @@
 // $caminho_raiz → prefixo para caminhos de CSS e links do menu
 //                 './' = estamos na raiz do projeto
 // $titulo_pagina → aparece na aba do navegador
+
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+
 $pagina_atual  = 'inicio';
 $caminho_raiz  = './';
 $titulo_pagina = 'Portfólio — Yasmin Lara Amanajás de Miranda';
@@ -59,7 +64,7 @@ $email     = '20241CTB0100077@estudantes.ifpr.edu.br';
       <!-- Foto de perfil -->
       <div class="foto-container">
         <img
-          src="<?php echo $caminho_raiz; ?>00_apresentacao/imgs/ft.jpg"
+          src="<?php echo $caminho_raiz; ?>includes/imgs/ft.jpg"
           alt="Foto de <?php echo htmlspecialchars($nome); ?>"
           class="foto-perfil">
       </div>

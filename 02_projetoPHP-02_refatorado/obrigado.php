@@ -1,4 +1,8 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 $nome = "Yasmin Lara Amanajás de Miranda";
 $pagina_atual = "contato";
 $caminho_raiz = "../";
@@ -8,7 +12,7 @@ $nome_visitante = htmlspecialchars ($_GET[ 'nome' ] ?? 'visitante');
 $assunto = htmlspecialchars ($_GET[ 'assunto' ] ?? 'sem assunto') ;
 ?>
 
-    <?php include $caminho_raiz . 'includes/cabecalho.php'; ?>
+    <?php include 'includes/cabecalho.php'; ?>
     <div class="container">
         <h1 class="obrigado">Obrigada, <?php echo $nome_visitante; ?>!</h1>
         <p class="msg">
@@ -19,4 +23,4 @@ $assunto = htmlspecialchars ($_GET[ 'assunto' ] ?? 'sem assunto') ;
             <a href="contato.php">Enviar outra mensagem</a>
         </div>
     </div>
-<?php include $caminho_raiz . 'includes/rodape.php'; ?>
+<?php include 'includes/rodape.php'; ?>

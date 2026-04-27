@@ -1,7 +1,9 @@
 <?php
-    $nome = "Yasmin Lara Amanajás de Miranda";
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
     $pagina_atual = "contato";
-    $caminho_raiz = "../";
+    $caminho_raiz = "./";
     $titulo_pagina = "Contato";
     
 

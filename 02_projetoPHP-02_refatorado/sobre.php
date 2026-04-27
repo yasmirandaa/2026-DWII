@@ -10,7 +10,9 @@
  *              organizadas em estrutura de dados (array).
  * ════════════════════════════════════════════════════════════
  */
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $pagina_atual = 'sobre';
 $caminho_raiz = './';
 $titulo_pagina = 'Sobre — Yasmin Miranda';
