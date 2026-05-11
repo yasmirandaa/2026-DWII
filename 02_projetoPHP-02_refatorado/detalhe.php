@@ -1,17 +1,29 @@
 <?php
-    $caminho_raiz = '../';
 
-    require_once 'includes/conexao.php';
+    if (session_status() === PHP_SESSION_NONE) session_start();
+
+    $titulo_pagina = "Detalhe | Portifólio DWII";
+    $pagina_atual = "catalogo";
+    $caminho_raiz = './';
+
+    require_once __DIR__ . '/includes/conexao.php';
 
     $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
     
-    if (!$id) {
-        header('Location: index.php');
+    if (!$id || $id <= 0) {
+        header('Location: catalogo.php');
         exit;
     }
 
-    $stmt = $pdo->prepare('SELECT * FROM tecnologias WHERE id = :id');
-    $stmt->execute(['id' => $id]);
+    $pdo = conectar();
+
+    $stmt = $pdo->prepare(
+        "SELECT * FROM tecnologias 
+        WHERE id = :id
+        AND status = 'ativo'
+        LIMIT 1"
+        );
+    $stmt->execute([':id' => $id]);
     $tec = $stmt->fetch(); 
 
     if (!$tec) {
@@ -22,14 +34,12 @@
 
     $categoria = $_GET['categoria'] ?? '';
     $link_voltar = $categoria ? "index.php?categoria=" . urlencode($categoria) : "index.php";
-
-    $titulo_pagina = htmlspecialchars ($tec['nome'] ) . " - Catalogo";
-    $pagina_atual = "catalogo";
+  
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <?php include 'includes/cab_pdo.php' ; ?>
+    <?php include __DIR__ . '/includes/cabecalho.php' ; ?>
 </head>
 <body>
     <div class="container">
@@ -68,6 +78,6 @@
             </table>
         </div>
     </div>
-    <?php include 'includes/rod_pdo.php' ; ?>
+    <?php include __DIR__ . '/includes/rodape.php' ; ?>
 </body>
-</html
+</html>

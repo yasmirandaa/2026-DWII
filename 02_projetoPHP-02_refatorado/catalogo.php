@@ -1,8 +1,16 @@
 <?php
-    $titulo_pagina = "Catálogo de Tecnologias";
+    if (session_status() === PHP_SESSION_NONE) session_start();
     $pagina_atual = "catalogo";
-    
-    require_once 'includes/conexao.php';
+    $titulo_pagina = "Catálogo de Tecnologias | Portfólio DWII";
+    $caminho_raiz = './';
+    require_once __DIR__ . 'includes/conexao.php';
+    $pdo = conectar();
+    $stmt = $pdo->query(
+        "Select * FROM tecnologias
+        WHERE status = 'ativo' 
+        ORDER BY nome ASC"
+    );
+    $tecnologias = $stmt->fetchAll();
 
     // Capturar o filtro da URL (vazio se não existir)
     $categoria = trim($_GET['categoria'] ?? '');
@@ -39,7 +47,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <?php include 'includes/cab_pdo.php'; ?>
+    <?php include __DIR__ . '/includes/cab_pdo.php'; ?>
 </head>
 <body>
 
@@ -82,6 +90,6 @@
         </div>
     <?php endforeach; ?>
     </div>
-    <?php include 'includes/rod_pdo.php'; ?>
+    <?php include __DIR__ . '/includes/rodape.php'; ?>
 </body>
 </html>
