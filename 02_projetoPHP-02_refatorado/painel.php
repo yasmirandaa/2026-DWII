@@ -10,6 +10,7 @@
     $flash = $_SESSION['flash'] ?? null;
     unset($_SESSION['flash']);
 
+    $pagina_atual = 'painel';
     $titulo_pagina = 'Painel Área Restrita';
     $caminho_raiz = '../';
 ?>
